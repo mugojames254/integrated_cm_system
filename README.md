@@ -54,7 +54,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone or Navigate to the Project Directory
 
 ```bash
-cd /root/course_work/smart_facility_mgt/code_env/constructionManagementSystem/integrated_cm_system
+cd /integrated_cm_system
 ```
 
 ### 2. Install Backend Dependencies
