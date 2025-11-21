@@ -1,0 +1,23 @@
+.employees-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.employees-table {
+  overflow-x: auto;
+}
+
+.employees-table table {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .employees-table {
+    font-size: 12px;
+  }
+
+  .employees-table table th,
+  .employees-table table td {
+    padding: 8px;
+  }
+}

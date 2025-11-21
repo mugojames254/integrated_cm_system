@@ -1,0 +1,53 @@
+.resources-page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.tab:hover {
+  background-color: #f0f0f0;
+}
+
+.tab.active {
+  background-color: #667eea;
+  color: white;
+}
+
+.resources-table {
+  overflow-x: auto;
+}
+
+.resources-table table {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .filter-tabs {
+    flex-wrap: wrap;
+  }
+
+  .resources-table {
+    font-size: 12px;
+  }
+
+  .resources-table table th,
+  .resources-table table td {
+    padding: 8px;
+  }
+}
