@@ -32,11 +32,23 @@ app.use('/api/users', userRoutes);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const buildPath = path.join(__dirname, '../client/build');
+  const fs = require('fs');
   
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
+  console.log('Production mode - Looking for build at:', buildPath);
+  console.log('Build exists:', fs.existsSync(buildPath));
+  
+  if (!fs.existsSync(buildPath)) {
+    console.error('ERROR: Build directory not found!');
+    console.error('Please run: npm run build');
+  } else {
+    app.use(express.static(buildPath));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(buildPath, 'index.html'));
+    });
+    console.log('Serving React build from:', buildPath);
+  }
 }
 
 // Error handling middleware
