@@ -6,6 +6,13 @@ const { db } = require('../database/init');
 
 const router = express.Router();
 
+// Get JWT_SECRET with fallback
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+
+if (!process.env.JWT_SECRET) {
+  console.warn('WARNING: JWT_SECRET not set in environment variables. Using default (not secure for production).');
+}
+
 // Register
 router.post('/register', [
   body('username').trim().isLength({ min: 3 }),
@@ -37,7 +44,7 @@ router.post('/register', [
 
         const token = jwt.sign(
           { id: this.lastID, username, role },
-          process.env.JWT_SECRET,
+          JWT_SECRET,
           { expiresIn: '24h' }
         );
 
@@ -85,7 +92,7 @@ router.post('/login', [
 
       const token = jwt.sign(
         { id: user.id, username: user.username, role: user.role },
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         { expiresIn: '24h' }
       );
 
