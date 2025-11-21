@@ -2,7 +2,7 @@ services:
   - type: web
     name: integrated-cm-system
     env: node
-    buildCommand: npm run render-build
+    buildCommand: bash build.sh
     startCommand: npm start
     envVars:
       - key: NODE_ENV
